@@ -10,7 +10,7 @@ class TierItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return itemClass.getItemByTier(tier).isNotEmpty ?Column(
       children: [
         ListTile(
           title: Text("T$tier"),
@@ -25,6 +25,6 @@ class TierItem extends StatelessWidget {
               }),
         )
       ],
-    );
+    ) : const SizedBox();
   }
 }

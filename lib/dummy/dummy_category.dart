@@ -12,19 +12,18 @@ class DummyCategory {
         ItemVO(name: "Carving Sword", id: "2H_CLEAVER_HELL", startTier: 4, endTier: 8),
         ItemVO(name: "Galatine Pair", id: "2H_DUALSCIMITAR_UNDEAD", startTier: 4, endTier: 8),
         ItemVO(name: "Kingmaker", id: "2H_CLAYMORE_AVALON", startTier: 4, endTier: 8)
-
       ]),
       ItemClassVO(name: "Axe", itemList: [
-
+        ItemVO(name: "Battleaxe", id: "MAIN_AXE", startTier: 3, endTier: 8),
+        ItemVO(name: "Greataxe", id: "2H_AXE", startTier: 4, endTier: 8),
+        ItemVO(name: "Infernal Scythe", id: "2H_SCYTHE_HELL", startTier: 4, endTier: 8),
+        ItemVO(name: "Bear Paws", id: "2H_DUALAXE_KEEPER", startTier: 4, endTier: 8),
+        ItemVO(name: "Realmbreaker", id: "2H_AXE_AVALON", startTier: 4, endTier: 8),
       ])
     ]),
     CategoryVO(name: "Off Hand", itemClassList: [
-      ItemClassVO(name: "Shield", itemList: [
-
-      ]),
-      ItemClassVO(name: "Torch", itemList: [
-
-      ])
+      ItemClassVO(name: "Shield", itemList: []),
+      ItemClassVO(name: "Torch", itemList: [])
     ])
   ];
 }

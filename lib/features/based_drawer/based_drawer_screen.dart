@@ -12,6 +12,9 @@ class BasedDrawerScreen extends StatefulWidget {
 }
 
 class _BasedDrawerScreenState extends State<BasedDrawerScreen> {
+  String selectedCategoryName = "";
+  String selectedItemClassName = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,22 +22,35 @@ class _BasedDrawerScreenState extends State<BasedDrawerScreen> {
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(
-            children: const[
+            children: [
               SizedBox(height: 28),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: DrawerHeaderSection(),
               ),
               SizedBox(height: 28),
-              DrawerCategorySection()
+              DrawerCategorySection(
+                categoryName: selectedCategoryName,
+                itemClassName: selectedItemClassName,
+                onItemChanged: (categoryName, itemClassName) {
+                  setState(() {
+                    selectedCategoryName = categoryName;
+                    selectedItemClassName = itemClassName;
+                  });
+                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                },
+              )
             ],
           ),
         ),
       ),
-      body: ItemListScreen(
-        categoryName: "Main Hand",
-        itemClass: "Sword",
-      ),
+      body: selectedCategoryName != ""
+          ? ItemListScreen(
+              categoryName: selectedCategoryName,
+              itemClass: selectedItemClassName,
+            )
+          : SizedBox(),
     );
   }
 }
