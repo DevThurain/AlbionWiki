@@ -1,8 +1,15 @@
-class ItemVO {
-  String id;
-  String name;
-  int startTier;
-  int endTier;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ItemVO({required this.id, required this.name, required this.startTier, required this.endTier});
+part 'item_vo.freezed.dart';
+part 'item_vo.g.dart';
+
+
+@freezed
+class ItemVO with _$ItemVO {
+  factory ItemVO({
+    required String id, 
+    required String name, 
+    required int startTier, 
+    required int endTier}) = _ItemVO;
+  factory ItemVO.fromJson(Map<String, dynamic> json) => _$ItemVOFromJson(json);
 }
