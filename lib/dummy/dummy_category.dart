@@ -22,8 +22,17 @@ class DummyCategory {
       ])
     ]),
     CategoryVO(name: "Off Hand", itemClassList: [
-      ItemClassVO(name: "Shield", itemList: []),
-      ItemClassVO(name: "Torch", itemList: [])
+      ItemClassVO(name: "Shield", itemList: [
+        ItemVO(name: "Shield", id: "OFF_SHIELD", startTier: 1, endTier: 8),
+      ]),
+      ItemClassVO(name: "Torch", itemList: [
+        ItemVO(name: "Torch", id: "OFF_TORCH", startTier: 3, endTier: 8),
+      ])
+    ]),
+    CategoryVO(name: "Cape", itemClassList: [
+      ItemClassVO(name: "Undead Cape", itemList: [
+        ItemVO(name: "Undead Cape", id: "CAPEITEM_UNDEAD", startTier: 4, endTier: 8),
+      ])
     ])
   ];
 }

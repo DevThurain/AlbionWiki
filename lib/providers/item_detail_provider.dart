@@ -17,7 +17,8 @@ class ItemDetailProvider extends BasedProvider {
       return;
     }
     String itemIdWithTier = "T${tier}_$itemId";
-    Either<AppError, ItemDetailVO> respond = await _networkRepository.getItemDetail(itemId = itemIdWithTier);
+    Either<AppError, ItemDetailVO> respond =
+        await _networkRepository.getItemDetail(itemId = itemIdWithTier);
     respond.fold((L) {
       //logger.e("${L.errorCode} => ${L.message}");
       //return LoginUserErrorState(L);
@@ -28,4 +29,6 @@ class ItemDetailProvider extends BasedProvider {
       setState(ViewState.COMPLETE);
     });
   }
+
+
 }

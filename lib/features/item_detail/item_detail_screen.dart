@@ -1,4 +1,5 @@
 import 'package:albion_wiki/data/item_detail_vo.dart';
+import 'package:albion_wiki/features/item_detail/item_slot.dart';
 import 'package:albion_wiki/providers/based_provider.dart';
 import 'package:albion_wiki/providers/item_detail_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -72,113 +73,29 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
           ),
           SizedBox(height: 16),
           Text(itemDetail.fullName.name, style: TextStyle(fontSize: 18)),
-          SizedBox(height: 12),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "First Slot",
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                Column(
-                  children: itemDetail.activeSlots.slot1
-                      .map((spell) => ExpansionTile(
-                            tilePadding: EdgeInsets.zero,
-                            leading: CachedNetworkImage(
-                              imageUrl:
-                                  "https://render.albiononline.com/v1/spell/${spell.localizedNames.name}.png",
-                              width: 50,
-                              height: 50,
-                            ),
-                            title: Text(spell.localizedNames.name),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 8),
-                                child: Text("More Detail"),
-                              )
-                            ],
-                          ))
-                      .toList(),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Second Slot",
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                Column(
-                  children: itemDetail.activeSlots.slot2
-                      .map((spell) => ExpansionTile(
-                            tilePadding: EdgeInsets.zero,
-                            leading: CachedNetworkImage(
-                              imageUrl:
-                                  "https://render.albiononline.com/v1/spell/${spell.localizedNames.name}.png",
-                              width: 50,
-                              height: 50,
-                            ),
-                            title: Text(spell.localizedNames.name),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 8),
-                                child: Text("More Detail"),
-                              )
-                            ],
-                          ))
-                      .toList(),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Third Slot",
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                Column(
-                  children: itemDetail.activeSlots.slot3
-                      .map((spell) => ExpansionTile(
-                            tilePadding: EdgeInsets.zero,
-                            leading: CachedNetworkImage(
-                              imageUrl:
-                                  "https://render.albiononline.com/v1/spell/${spell.localizedNames.name}.png",
-                              width: 50,
-                              height: 50,
-                            ),
-                            title: Text(spell.localizedNames.name),
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 8),
-                                child: Text("More Detail"),
-                              )
-                            ],
-                          ))
-                      .toList(),
-                ),
-              ],
-            ),
-          ),
-          
+          _buildSlot("First Slot", itemDetail.activeSlots.slot1),
+          _buildSlot("Second Slot", itemDetail.activeSlots.slot2),
+          _buildSlot("Third Slot", itemDetail.activeSlots.slot3),
+          _buildSlot("Passive Slot", itemDetail.passiveSlots.slot1)
+
           // )
         ],
       ),
     );
+  }
+
+  Widget _buildSlot(String slotName, List<SpellVO> spellList) {
+    return spellList.isNotEmpty
+        ? Column(
+            children: [
+              SizedBox(height: 12),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ItemSlot(slotName: slotName, spellList: spellList),
+              ),
+            ],
+          )
+        : SizedBox();
   }
 }
 

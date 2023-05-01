@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home:  ItemDetailScreen(args: ItemDetailArgs(itemId: "MAIN_CURSEDSTAFF",itemName: "Light Crossbow",tier: 4),),
-      home: TestScreen(),
+      // home:  ItemDetailScreen(args: ItemDetailArgs(itemId: "2H_TWINSCYTHE_HELL",itemName: "Light Crossbow",tier: 4),),
+      // home: TestScreen(),
       onGenerateRoute: Routes.generateRoutes,
     );
   }
