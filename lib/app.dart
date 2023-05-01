@@ -1,4 +1,6 @@
 import 'package:albion_wiki/features/based_drawer/based_drawer_screen.dart';
+import 'package:albion_wiki/features/item_detail/item_detail_screen.dart';
+import 'package:albion_wiki/features/test/test_screen.dart';
 import 'package:albion_wiki/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BasedDrawerScreen(),
+      // home:  ItemDetailScreen(args: ItemDetailArgs(itemId: "MAIN_CURSEDSTAFF",itemName: "Light Crossbow",tier: 4),),
+      home: TestScreen(),
       onGenerateRoute: Routes.generateRoutes,
     );
   }

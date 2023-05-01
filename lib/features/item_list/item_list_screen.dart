@@ -22,9 +22,9 @@ class ItemListScreen extends StatelessWidget {
                 .where((category) => categoryName == category.name)
                 .first
                 .getItemClassByName(itemClass),
-            onTap: (String itemId, int tier) {
+            onTap: (String itemId, String itemName,int tier) {
               Navigator.pushNamed(context, ItemDetailScreen.routeName,
-                  arguments: ItemDetailArgs(itemId: itemId, tier: tier));
+                  arguments: ItemDetailArgs(itemId: itemId, itemName: itemName,tier: tier));
             },
           );
         });

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class TierItem extends StatelessWidget {
   final int tier;
   final ItemClassVO itemClass;
-  final Function(String, int) onTap;
+  final Function(String, String,int) onTap;
   const TierItem({super.key, required this.tier, required this.itemClass, required this.onTap});
 
   @override
@@ -26,7 +26,10 @@ class TierItem extends StatelessWidget {
                         itemVO: itemClass.getItemByTier(tier)[index],
                         tier: tier,
                         onTap: () {
-                          onTap(itemClass.getItemByTier(tier)[index].id, tier);
+                          onTap(
+                            itemClass.getItemByTier(tier)[index].id, 
+                            itemClass.getItemByTier(tier)[index].name,
+                            tier);
                         },
                       );
                     }),
