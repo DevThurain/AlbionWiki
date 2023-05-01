@@ -18,7 +18,9 @@ part 'item_class_vo.g.dart';
 @freezed
 class ItemClassVO with _$ItemClassVO {
   ItemClassVO._();
-  factory ItemClassVO({required String name, required List<ItemVO> itemList}) = _ItemClassVO;
+  factory ItemClassVO({
+    required String name, 
+    required List<ItemVO> itemList}) = _ItemClassVO;
 
   factory ItemClassVO.fromJson(Map<String, dynamic> json) => _$ItemClassVOFromJson(json);
 

@@ -1,10 +1,12 @@
 import 'package:albion_wiki/dummy/dummy_category.dart';
 import 'package:albion_wiki/features/based_drawer/sections/drawer_category_section.dart';
 import 'package:albion_wiki/features/based_drawer/sections/drawer_header_section.dart';
+import 'package:albion_wiki/features/item_detail/item_detail_screen.dart';
 import 'package:albion_wiki/features/item_list/item_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class BasedDrawerScreen extends StatefulWidget {
+  static const routeName = "based_drawer_screen";
   const BasedDrawerScreen({super.key});
 
   @override
@@ -49,6 +51,7 @@ class _BasedDrawerScreenState extends State<BasedDrawerScreen> {
           ? ItemListScreen(
               categoryName: selectedCategoryName,
               itemClass: selectedItemClassName,
+
             )
           : SizedBox(),
     );
