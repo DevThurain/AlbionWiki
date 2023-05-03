@@ -91,7 +91,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
               SizedBox(height: 12),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: ItemSlot(slotName: slotName, spellList: spellList),
+                child: ItemSlot(slotName: slotName, categoryName: widget.args.categoryName,spellList: spellList),
               ),
             ],
           )
@@ -102,7 +102,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
 class ItemDetailArgs {
   final String itemId;
   final String itemName;
+  final String categoryName;
   final int tier;
 
-  ItemDetailArgs({required this.itemId, required this.itemName, required this.tier});
+  ItemDetailArgs({required this.itemId, required this.itemName, required this.categoryName,required this.tier});
 }

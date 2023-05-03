@@ -5,6 +5,7 @@ class ApiConstants {
   static const ALBION_WEST_URL = "https://west.albion-online-data.com";
 
   static const ALBION_TOOL_URL = "https://gameinfo.albiononline.com/api";
+  static const ALBION_WIKI_URL = "https://wiki.albiononline.com";
 
   static const DEFAULT_NETWORK_CONNECT_TIMEOUT = Duration.millisecondsPerMinute;
   static const DEFAULT_NETWORK_RECEIVE_TIMEOUT = Duration.microsecondsPerMinute;

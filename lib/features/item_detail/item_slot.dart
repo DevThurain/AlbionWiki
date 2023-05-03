@@ -7,14 +7,22 @@ import 'package:provider/provider.dart';
 
 class ItemSlot extends StatefulWidget {
   final String slotName;
+  final String categoryName;
   final List<SpellVO> spellList;
-  const ItemSlot({super.key, required this.slotName, required this.spellList});
+  const ItemSlot(
+      {super.key, required this.slotName, required this.categoryName, required this.spellList});
 
   @override
   State<ItemSlot> createState() => _ItemSlotState();
 }
 
 class _ItemSlotState extends State<ItemSlot> {
+  @override
+  void initState() {
+    print("category name -- ${widget.categoryName}");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +37,8 @@ class _ItemSlotState extends State<ItemSlot> {
           children: widget.spellList
               .map((spell) => ChangeNotifierProvider(
                   create: (context) => ItemSlotProvider()
-                    ..fetchSpellDetail(spell.localizedNames.name.replaceAll(" ", "_")),
+                    ..fetchSpellDetail(
+                        widget.categoryName, spell.localizedNames.name.replaceAll(" ", "_")),
                   builder: (context, child) {
                     return ExpansionTile(
                       tilePadding: EdgeInsets.zero,
@@ -67,7 +76,7 @@ class _ItemSlotState extends State<ItemSlot> {
         );
 
       case ViewState.COMPLETE:
-        return Text(context.read<ItemSlotProvider>().spellDetail.toString());
+        return _completeUI(context);
 
       case ViewState.ERROR:
         return SizedBox();
@@ -75,5 +84,28 @@ class _ItemSlotState extends State<ItemSlot> {
       case ViewState.NO_INTERNET:
         return SizedBox();
     }
+  }
+
+  Widget _completeUI(BuildContext context) {
+    return Column(
+      children: [
+        Text(context.read<ItemSlotProvider>().spellDetail?.description ?? "-"),
+        context.read<ItemSlotProvider>().spellDetail?.gifUrl.isNotEmpty == true
+            ? Column(
+                children: [
+                  SizedBox(height: 8),
+                  // Image.network(
+                  //   context.read<ItemSlotProvider>().spellDetail!.gifUrl,
+                  //   ),
+                  CachedNetworkImage(
+                    imageUrl: context.read<ItemSlotProvider>().spellDetail!.gifUrl,
+                    placeholder: ((context, url) => CircularProgressIndicator()),
+                  ),
+                  SizedBox(height: 8),
+                ],
+              )
+            : SizedBox()
+      ],
+    );
   }
 }

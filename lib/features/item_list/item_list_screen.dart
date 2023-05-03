@@ -24,7 +24,7 @@ class ItemListScreen extends StatelessWidget {
                 .getItemClassByName(itemClass),
             onTap: (String itemId, String itemName,int tier) {
               Navigator.pushNamed(context, ItemDetailScreen.routeName,
-                  arguments: ItemDetailArgs(itemId: itemId, itemName: itemName,tier: tier));
+                  arguments: ItemDetailArgs(itemId: itemId, itemName: itemName,categoryName: categoryName,tier: tier));
             },
           );
         });

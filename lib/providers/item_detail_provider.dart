@@ -11,6 +11,7 @@ class ItemDetailProvider extends BasedProvider {
   AppError? appError;
   final NetworkRepository _networkRepository = NetworkRepositoryImpl();
 
+
   void getItemDetail(String itemId, int tier) async {
     setState(ViewState.LOADING);
     if (await handleConnectionView(isReplaceView: false)) {
